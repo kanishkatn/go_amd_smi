@@ -186,9 +186,11 @@ bool goamdsmi_gpu_init()
         return false;
     }
     goamdsmi_status_t amdsmigpu_  = go_shim_amdsmigpu_init();
+    printf("amdsmigpu_ = %d\n", amdsmigpu_);
     if   (GOAMDSMI_STATUS_SUCCESS == amdsmigpu_)   {amdsmigpu_init = true;}
     else {
         goamdsmi_status_t rsmi_   = go_shim_rsmi_init();
+        printf("rsmi_ = %d\n", rsmi_);
         if(GOAMDSMI_STATUS_SUCCESS == rsmi_)       {rsmi_init = true;}
     }
 

@@ -114,6 +114,7 @@ goamdsmi_status_t check_hsmp_driver()
 
 goamdsmi_status_t go_shim_amdsmiapu_init(goamdsmi_Init_t goamdsmi_Init)
 {
+    printf("go_shim_amdsmiapu_init\n");
     if((GOAMDSMI_CPU_INIT == goamdsmi_Init) && (true == cpuInitCompleted))
     {
         if((0 == num_cpuSockets)||(0 == num_cpu_inAllSocket)||(0 == num_cpu_physicalCore_inAllSocket))
@@ -436,8 +437,10 @@ goamdsmi_status_t go_shim_amdsmicpu_core_boostlimit_get(uint32_t thread_index, u
 ////////////////////////////////////////////////------------GPU------------////////////////////////////////////////////////
 goamdsmi_status_t go_shim_amdsmigpu_init()
 {
+    printf("go_shim_amdsmigpu_init\n");
     if(GOAMDSMI_STATUS_SUCCESS == go_shim_amdsmiapu_init(GOAMDSMI_GPU_INIT))
     {
+        printf("num_gpu_devices_inAllSocket: %d\n", num_gpu_devices_inAllSocket);
         if((num_gpu_devices_inAllSocket))
         {
             if (enable_debug_level(GOAMDSMI_DEBUG_LEVEL_1)) {printf("AMDSMI, Success, InitAMDSMIGPUInit:%d, GpuSocketCount:%d, GpuCount:%d\n", GOAMDSMI_STATUS_SUCCESS, num_gpuSockets, num_gpu_devices_inAllSocket);}
@@ -703,7 +706,10 @@ goamdsmi_status_t go_shim_amdsmicpu_socket_power_cap_get(uint32_t socket_index, 
 goamdsmi_status_t go_shim_amdsmicpu_core_boostlimit_get(uint32_t thread_index, uint32_t* core_boostlimit)  {return GOAMDSMI_STATUS_FAILURE;}
 
 ////////////////////////////////////////////////------------GPU------------////////////////////////////////////////////////
-goamdsmi_status_t go_shim_amdsmigpu_init()                                                        {return GOAMDSMI_STATUS_FAILURE;}
+goamdsmi_status_t go_shim_amdsmigpu_init() {
+    printf("go_shim_amdsmigpu_init failure case\n");
+    return GOAMDSMI_STATUS_FAILURE;
+}
 goamdsmi_status_t go_shim_amdsmigpu_shutdown()                                                    {return GOAMDSMI_STATUS_FAILURE;}
 goamdsmi_status_t go_shim_amdsmigpu_num_monitor_devices(uint32_t* gpu_num_monitor_devices)        {return GOAMDSMI_STATUS_FAILURE;}
 goamdsmi_status_t go_shim_amdsmigpu_dev_name_get(uint32_t dv_ind, char** gpu_dev_name)            {return GOAMDSMI_STATUS_FAILURE;}

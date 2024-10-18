@@ -1,3 +1,5 @@
+//go:build ignore
+
 // SPDX-License-Identifier: MIT
 /*
  * Copyright (c) 2022, Advanced Micro Devices, Inc.
@@ -36,7 +38,7 @@
  *
  */
 
-package goamdsmi
+package main
 
 /*
 #cgo CFLAGS: -Wall -I./goamdsmi_shim/amdsmi -I./goamdsmi_shim/esmi -I./goamdsmi_shim/rsmi -I./goamdsmi_shim/goamdsmi -DENABLE_DEBUG_LEVEL=2

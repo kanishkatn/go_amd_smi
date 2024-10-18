@@ -256,7 +256,8 @@ uint64_t goamdsmi_gpu_dev_pci_id_get(uint32_t dv_ind)
 {
     uint64_t gpu_pci_id = GOAMDSMI_UINT64_MAX;
     
-    if      ((amdsmigpu_init)&&(GOAMDSMI_STATUS_SUCCESS == go_shim_amdsmigpu_dev_pci_id_get(dv_ind, &gpu_pci_id))) {return gpu_pci_id;}
+    if      ((
+    )&&(GOAMDSMI_STATUS_SUCCESS == go_shim_amdsmigpu_dev_pci_id_get(dv_ind, &gpu_pci_id))) {return gpu_pci_id;}
     else if ((rsmi_init)     &&(GOAMDSMI_STATUS_SUCCESS == go_shim_rsmi_dev_pci_id_get(dv_ind, &gpu_pci_id)))      {return gpu_pci_id;}
 
     if (enable_debug_level(GOAMDSMI_DEBUG_LEVEL_1)) {printf("GOAMDSMI, Failed for Gpu:%d, GpuPciId:%ld\n", dv_ind, GOAMDSMI_UINT64_MAX);}
